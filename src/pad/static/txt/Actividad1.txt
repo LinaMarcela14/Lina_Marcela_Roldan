@@ -1,0 +1,84 @@
+{
+    "amiibo": [
+        {
+            "amiiboSeries": "Legend Of Zelda",
+            "character": "Zelda",
+            "gameSeries": "The Legend of Zelda",
+            "head": "01010300",
+            "image": "https://raw.githubusercontent.com/N3evin/AmiiboAPI/master/images/icon_01010300-04140902.png",
+            "name": "Zelda & Loftwing",
+            "release": {
+                "au": "2021-07-16",
+                "eu": "2021-07-16",
+                "jp": "2021-07-16",
+                "na": "2021-07-16"
+            },
+            "tail": "04140902",
+            "type": "Figure"
+        },
+        {
+            "amiiboSeries": "Legend Of Zelda",
+            "character": "Zelda",
+            "gameSeries": "The Legend of Zelda",
+            "head": "01010000",
+            "image": "https://raw.githubusercontent.com/N3evin/AmiiboAPI/master/images/icon_01010000-03560902.png",
+            "name": "Zelda",
+            "release": {
+                "au": "2017-03-03",
+                "eu": "2017-03-03",
+                "jp": "2017-03-03",
+                "na": "2017-03-03"
+            },
+            "tail": "03560902",
+            "type": "Figure"
+        },
+        {
+            "amiiboSeries": "Legend Of Zelda",
+            "character": "Zelda",
+            "gameSeries": "The Legend of Zelda",
+            "head": "01010000",
+            "image": "https://raw.githubusercontent.com/N3evin/AmiiboAPI/master/images/icon_01010000-03520902.png",
+            "name": "Toon Zelda - The Wind Waker",
+            "release": {
+                "au": "2016-12-03",
+                "eu": "2016-12-02",
+                "jp": "2016-12-01",
+                "na": "2016-12-02"
+            },
+            "tail": "03520902",
+            "type": "Figure"
+        },
+        {
+            "amiiboSeries": "Legend Of Zelda",
+            "character": "Zelda",
+            "gameSeries": "The Legend of Zelda",
+            "head": "01010000",
+            "image": "https://raw.githubusercontent.com/N3evin/AmiiboAPI/master/images/icon_01010000-04190902.png",
+            "name": "Zelda - Tears of the Kingdom",
+            "release": {
+                "au": "2023-11-03",
+                "eu": "2023-11-03",
+                "jp": "2023-11-03",
+                "na": "2023-11-03"
+            },
+            "tail": "04190902",
+            "type": "Figure"
+        },
+        {
+            "amiiboSeries": "Super Smash Bros.",
+            "character": "Zelda",
+            "gameSeries": "The Legend of Zelda",
+            "head": "01010000",
+            "image": "https://raw.githubusercontent.com/N3evin/AmiiboAPI/master/images/icon_01010000-000e0002.png",
+            "name": "Zelda",
+            "release": {
+                "au": "2014-12-12",
+                "eu": "2014-12-19",
+                "jp": "2014-12-06",
+                "na": "2014-12-14"
+            },
+            "tail": "000e0002",
+            "type": "Figure"
+        }
+    ]
+}{'amiibo': [{'amiiboSeries': 'Legend Of Zelda', 'character': 'Zelda', 'gameSeries': 'The Legend of Zelda', 'head': '01010300', 'image': 'https://raw.githubusercontent.com/N3evin/AmiiboAPI/master/images/icon_01010300-04140902.png', 'name': 'Zelda & Loftwing', 'release': {'au': '2021-07-16', 'eu': '2021-07-16', 'jp': '2021-07-16', 'na': '2021-07-16'}, 'tail': '04140902', 'type': 'Figure'}, {'amiiboSeries': 'Legend Of Zelda', 'character': 'Zelda', 'gameSeries': 'The Legend of Zelda', 'head': '01010000', 'image': 'https://raw.githubusercontent.com/N3evin/AmiiboAPI/master/images/icon_01010000-03560902.png', 'name': 'Zelda', 'release': {'au': '2017-03-03', 'eu': '2017-03-03', 'jp': '2017-03-03', 'na': '2017-03-03'}, 'tail': '03560902', 'type': 'Figure'}, {'amiiboSeries': 'Legend Of Zelda', 'character': 'Zelda', 'gameSeries': 'The Legend of Zelda', 'head': '01010000', 'image': 'https://raw.githubusercontent.com/N3evin/AmiiboAPI/master/images/icon_01010000-03520902.png', 'name': 'Toon Zelda - The Wind Waker', 'release': {'au': '2016-12-03', 'eu': '2016-12-02', 'jp': '2016-12-01', 'na': '2016-12-02'}, 'tail': '03520902', 'type': 'Figure'}, {'amiiboSeries': 'Legend Of Zelda', 'character': 'Zelda', 'gameSeries': 'The Legend of Zelda', 'head': '01010000', 'image': 'https://raw.githubusercontent.com/N3evin/AmiiboAPI/master/images/icon_01010000-04190902.png', 'name': 'Zelda - Tears of the Kingdom', 'release': {'au': '2023-11-03', 'eu': '2023-11-03', 'jp': '2023-11-03', 'na': '2023-11-03'}, 'tail': '04190902', 'type': 'Figure'}, {'amiiboSeries': 'Super Smash Bros.', 'character': 'Zelda', 'gameSeries': 'The Legend of Zelda', 'head': '01010000', 'image': 'https://raw.githubusercontent.com/N3evin/AmiiboAPI/master/images/icon_01010000-000e0002.png', 'name': 'Zelda', 'release': {'au': '2014-12-12', 'eu': '2014-12-19', 'jp': '2014-12-06', 'na': '2014-12-14'}, 'tail': '000e0002', 'type': 'Figure'}]}

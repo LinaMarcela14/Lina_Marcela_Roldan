@@ -55,13 +55,10 @@ class Actividad1():
 
         
     def escribir_json(self,nombre,datos):
-        ruta_json = "{}/json/{}".format(self.ruta_static,nombre)
+        ruta_json = "{}/datos.json/{}".format(self.ruta_static,nombre)
         with open(ruta.json, 'w', encoding='utf-8') as f:
             json.dump(datos, f, ensure_ascii=False, indent=4)
-            #ensure_ascii=False para caracteres especiales
-            #indent=4 para un formato legible
-            print("Archivo JSON guardado correctamente.")
-    
+          
     def escribir_txt(self,nombre_archivo="",datos=None): # "" '' """ """
         if nombre_archivo=="":
             nombre_archivo="datos.txt"
