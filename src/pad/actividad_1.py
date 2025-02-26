@@ -78,6 +78,6 @@ print("datos json:",datos_json)
 #if ingestion.escribir_json(nombre_archivo="entrega_actividad1.json",datos=datos_json):
  #   print("se creo el archivo json")
 ingestion.escribir_txt("Actividad1.txt",datos_json) 
-ingestion.escribir_json("Actividad1.json",datos_json)
+
 
 
