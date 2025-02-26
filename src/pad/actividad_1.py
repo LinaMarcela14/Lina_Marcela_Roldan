@@ -55,8 +55,8 @@ class Actividad1():
 
         
     def escribir_json(self,nombre,datos):
-        ruta_json = "{}/datos.json/{}".format(self.ruta_static,nombre)
-        with open(ruta.json, 'w', encoding='utf-8') as f:
+        ruta_json = "{}/json/{}".format(self.ruta_static,nombre)
+        with open(ruta_json, 'w', encoding='utf-8') as f:
             json.dump(datos, f, ensure_ascii=False, indent=4)
           
     def escribir_txt(self,nombre_archivo="",datos=None): # "" '' """ """
@@ -78,6 +78,8 @@ print("datos json:",datos_json)
 #if ingestion.escribir_json(nombre_archivo="entrega_actividad1.json",datos=datos_json):
  #   print("se creo el archivo json")
 ingestion.escribir_txt("Actividad1.txt",datos_json) 
+ingestion.escribir_json("Actividad1.json",datos_json)
+print("se creo el archivo json")
 
 
 
