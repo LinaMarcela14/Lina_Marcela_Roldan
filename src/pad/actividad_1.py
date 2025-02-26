@@ -46,9 +46,9 @@ class Ingestiones():
         pass
     
     def  leer_api(self,url=""):
+        pass 
         
-        
-    def  escribir_json(self,datos):
+    def escribir_json(self,datos):
         pass
     
     def escribir_txt(self,nombre,datos):
