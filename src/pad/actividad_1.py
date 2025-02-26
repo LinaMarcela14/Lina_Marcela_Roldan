@@ -1,4 +1,5 @@
 import json
+import requests
 
 
 
@@ -45,8 +46,29 @@ class Ingestiones():
     def  leer_bd(self,nombre_bd="",servidor="",puerto=0000):
         pass
     
-    def  leer_api(self,url=""):
-        pass 
+    def  leer_api(self,url):
+        url = 'https://exoplanetarchive.ipac.caltech.edu/TAP/sync'
+        query = """SELECT * FROM planet WHERE pl_status='C'""" 
+        params = {
+        'request': 'doQuery',
+        'lang': 'ADQL',
+         'format': 'csv',
+        'query': query
+    }
+
+        if response.status_code == 200:
+            print ("Datos obtenidos:")
+            print(response.text)
+
+        else:
+             print(f"Error {response.status_code}: No se pudo obtener los datos.")
+
+
+        response = requests.get(url)
+        return response.json()
+    print 
+
+
         
     def escribir_json(self,datos):
         pass
