@@ -4,7 +4,7 @@ import json
 
 class Ingestiones():
     def __init__(self):
-        self.ruta_static="src/pad_2025/static/"
+        self.ruta_static="src/pad/static/"
         
     def leer_json(self):
         # r read w write
@@ -46,7 +46,7 @@ class Ingestiones():
         pass
     
     def  leer_api(self,url=""):
-        pass    
+        
         
     def  escribir_json(self,datos):
         pass
