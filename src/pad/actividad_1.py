@@ -91,7 +91,7 @@ class Actividad1():
 
 
 ingestion =Actividad1()
-#datos_json = ingestion.leer_api("https://exoplanetarchive.ipac.caltech.edu/TAP/sync")
+#datos_json = Actividad1.leer_api("https://exoplanetarchive.ipac.caltech.edu/TAP/sync")
 #"https://exoplanetarchive.ipac.caltech.edu/TAP/sync"
 datos_json = ingestion.leer_api("https://exoplanetarchive.ipac.caltech.edu/TAP/sync")
 print("datos json:",datos_json)
