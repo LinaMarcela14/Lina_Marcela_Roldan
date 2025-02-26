@@ -72,7 +72,7 @@ class Actividad1():
 
 
         response = requests.get(url)
-        return response.txtn()
+        return response.txt()
     print("Datos en formato txt:")
        
 
