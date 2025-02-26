@@ -3,7 +3,7 @@ import requests
 
 
 
-class Ingestiones():
+class Actividad1():
     def __init__(self):
         self.ruta_static="src/pad/static/"
         
@@ -45,6 +45,13 @@ class Ingestiones():
     
     def  leer_bd(self,nombre_bd="",servidor="",puerto=0000):
         pass
+
+
+    def leer_api(self, url):
+        # El get()método envía una solicitud de GET a la url especificada.
+        response = requests.get("https://exoplanetarchive.ipac.caltech.edu/TAP/sync")
+        return response.json()
+
     
     def  leer_api(self,url):
         url = 'https://exoplanetarchive.ipac.caltech.edu/TAP/sync'
@@ -52,22 +59,22 @@ class Ingestiones():
         params = {
         'request': 'doQuery',
         'lang': 'ADQL',
-         'format': 'csv',
+         'format': 'txt',
         'query': query
     }
 
         if response.status_code == 200:
             print ("Datos obtenidos:")
-            print(response.text)
+            print(response.txt)
 
         else:
              print(f"Error {response.status_code}: No se pudo obtener los datos.")
 
 
         response = requests.get(url)
-        return response.json()
-    print 
-
+        return response.txtn()
+    print("Datos en formato txt:")
+       
 
         
     def escribir_json(self,datos):
@@ -83,12 +90,18 @@ class Ingestiones():
             f.writelines(datos)
 
 
+ingestion =Actividad1()
+#datos_json = ingestion.leer_api("https://exoplanetarchive.ipac.caltech.edu/TAP/sync")
+#"https://exoplanetarchive.ipac.caltech.edu/TAP/sync"
+datos_json = ingestion.leer_api("https://exoplanetarchive.ipac.caltech.edu/TAP/sync")
+print("datos json:",datos_json)
+if ingestion.escribir_json(nombre_archivo="entrega_actividad1.json",datos=datos_json):
+    print("se creo el archivo json")
 
 
 
 
-
-inges = Ingestiones() 
+inges = Actividad1
 datos_json = inges.leer_json()
 print(datos_json)
 print("************************************************************")
