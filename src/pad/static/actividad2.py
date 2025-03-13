@@ -11,6 +11,7 @@ class Actividad2:
 # 1. Genera un array con valores desde 10 hasta 29
 array1 = np.arange(10, 30)
 print("Array de 10 a 29:", array1)
+      
 
 # 2. Suma de todos los elementos en un array de 10x10 lleno de unos
 array2 = np.ones((10, 10))
@@ -76,7 +77,9 @@ x = np.random.rand(100)
 y = np.random.rand(100)
 plt.scatter(x, y)
 plt.title("Gráfico de dispersión")
+plt.savefig("grafico.png")
 plt.show()
+
 
 # 12. Gráfico de dispersión con y = sin(x) + ruido gaussiano
 x = np.linspace(-2 * np.pi, 2 * np.pi, 100)
