@@ -11,7 +11,6 @@ class Actividad2:
 # 1. Genera un array con valores desde 10 hasta 29
 array1 = np.arange(10, 30)
 print("Array de 10 a 29:", array1)
-      
 
 # 2. Suma de todos los elementos en un array de 10x10 lleno de unos
 array2 = np.ones((10, 10))
