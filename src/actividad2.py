@@ -68,7 +68,7 @@ print("Matriz con filas invertidas:", inverted_matrix)
 # 10. Seleccionar elementos mayores a 0.5 en un array aleatorio de tamaño 10
 array10 = np.random.rand(10)
 selected_elements = array10[array10 > 0.5]
-print("Elementos mayores a 0.5:", selected_elements) #hasta aqui bien
+print("Elementos mayores a 0.5:", selected_elements)
 
 # Gráficos de dispersión, densidad y contorno
 # 11. Gráfico de dispersión con dos arrays aleatorios de tamaño 100
@@ -126,6 +126,8 @@ plt.show()
 # 17. Histograma de 1000 números con distribución normal
 hist_data = np.random.randn(1000)
 plt.hist(hist_data, bins=30)
+plt.title("Histograma normal")
+plt.savefig("histogramanormal.png", dpi=300, bbox_inches='tight')
 plt.show()
 
 # 18. Histogramas de dos conjuntos de datos con distribuciones normales diferentes
@@ -134,6 +136,8 @@ data2 = np.random.normal(2, 1.5, 1000)
 plt.hist(data1, bins=30, alpha=0.5, label="Set 1")
 plt.hist(data2, bins=30, alpha=0.5, label="Set 2")
 plt.legend()
+plt.title("Histograma dos conjuntos")
+plt.savefig("histogramaconjuntos.png", dpi=300, bbox_inches='tight')
 plt.show()
 
 # 19. Experimentando con diferentes valores de bins
@@ -141,18 +145,24 @@ plt.hist(hist_data, bins=10, alpha=0.5, label="10 bins")
 plt.hist(hist_data, bins=30, alpha=0.5, label="30 bins")
 plt.hist(hist_data, bins=50, alpha=0.5, label="50 bins")
 plt.legend()
+plt.title("Histograma experimentando valores")
+plt.savefig("histogramadiferentesvalores.png", dpi=300, bbox_inches='tight')
 plt.show()
 
 # 20. Añadir línea vertical indicando la media
 mean_value = np.mean(hist_data)
 plt.hist(hist_data, bins=30)
 plt.axvline(mean_value, color='r', linestyle='dashed', linewidth=2)
+plt.title("Histograma indicando la media")
+plt.savefig("histogramaindicamedia.png", dpi=300, bbox_inches='tight')
 plt.show()
 
 # 21. Histogramas superpuestos con transparencias
 plt.hist(data1, bins=30, alpha=0.5, color='blue', label='Set 1')
 plt.hist(data2, bins=30, alpha=0.5, color='red', label='Set 2')
 plt.legend()
+plt.title("Histograma superpuestos")
+plt.savefig("histogramasuperpuestos.png", dpi=300, bbox_inches='tight')
 plt.show()
 
 
