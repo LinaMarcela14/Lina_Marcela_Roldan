@@ -1,11 +1,21 @@
 import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt
+import os
+
 
 class Actividad2:
     def __init__(self, data):
         datos = [(0,1),(0,2),(0,3),(0,4),(0,5)(0,6),(0,7),(0,8),(0,9),(0,10)]
         self.df = pd.DataFrame(data=datos, columns=["x", "y"])
+        
+    def __init__(self):
+        self.ruta_act2 = "src/pad/static/Actividad2/".format(os.path.dirname(os.path.abspath(__file__)))
+        self.df = pd.read_csv(self.ruta_act2 + "data.csv")
+        
+ruta_graficos = 'src/pad/static/Actividad2/graficos'
+os.makedirs(ruta_graficos, exist_ok=True)
+        
 
 # Introducción y cálculos con los arrays de NumPy
 # 1. Genera un array con valores desde 10 hasta 29
@@ -70,13 +80,31 @@ array10 = np.random.rand(10)
 selected_elements = array10[array10 > 0.5]
 print("Elementos mayores a 0.5:", selected_elements)
 
+df = pd.DataFrame({
+    'Array 1': [array1.tolist()],
+    'Suma total': [sum_array2],
+    'Producto elemento a elemento': [product_array.tolist()],
+    'Max Value': [max_val],
+    'Min Value': [min_val],
+    'Max Index': [max_idx],
+    'Min Index': [min_idx],
+    'Suma con Broadcasting': [result.tolist()],
+    'Submatriz': [submatrix.tolist()],
+    'Array modificado': [array8.tolist()],
+    'Matriz invertida': [inverted_matrix.tolist()],
+    'Valores filtrados': [selected_elements.tolist()],
+})
+ruta_csv = 'src/pad/static/Actividad2/numpy_results.csv'
+df.to_csv(ruta_csv, index=False)
+print(f"Archivo CSV generado en: {ruta_csv}")
+
 # Gráficos de dispersión, densidad y contorno
 # 11. Gráfico de dispersión con dos arrays aleatorios de tamaño 100
 x = np.random.rand(100)
 y = np.random.rand(100)
 plt.scatter(x, y)
 plt.title("Gráfico de dispersión")
-plt.savefig("graficodispersion.png", dpi=300)
+plt.savefig(f"{ruta_graficos}graficodispersion11.png", dpi=300)
 plt.show()
 
 
@@ -86,8 +114,7 @@ y = np.sin(x) + np.random.normal(0, 0.1, 100)
 plt.scatter(x, y, label="Datos con ruido")
 plt.plot(x, np.sin(x), color='r', label="y = sin(x)")
 plt.legend()
-plt.savefig("graficogaussiano.png")
-plt.show()
+plt.savefig(f"{ruta_graficos}grafico12.png", dpi=300)
 
 # 13. Gráfico de contorno con np.meshgrid y función z = cos(x) + sin(y)
 x = np.linspace(-5, 5, 50)
@@ -96,7 +123,7 @@ X, Y = np.meshgrid(x, y)
 Z = np.cos(X) + np.sin(Y)
 plt.contour(X, Y, Z)
 plt.title("Gráfico de contorno")
-plt.savefig("graficocontorno.png")
+plt.savefig(f"{ruta_graficos}grafico13.png", dpi=300)
 plt.show()
 
 # 14. Gráfico de dispersión con 1000 puntos y color basado en densidad
@@ -104,13 +131,13 @@ x = np.random.randn(1000)
 y = np.random.randn(1000)
 plt.scatter(x, y, c=np.random.rand(1000), cmap='viridis')
 plt.colorbar()
-plt.savefig("graficopuntos.png")
+plt.savefig(f"{ruta_graficos}grafico14.png", dpi=300)
 plt.show()
 
 # 15. Gráfico de contorno lleno
 plt.contourf(X, Y, Z, cmap='plasma')
 plt.colorbar()
-plt.savefig("graficolleno.png")
+plt.savefig(f"{ruta_graficos}grafico15.png", dpi=300)
 plt.show()
 
 # 16. Añadir etiquetas y leyendas con código LaTex
@@ -119,7 +146,7 @@ plt.xlabel(r'$Eje\ X$')
 plt.ylabel(r'$Eje\ Y$')
 plt.title(r'$Gráfico\ de\ Dispersión$')
 plt.legend()
-plt.savefig("graficolatex.png")
+plt.savefig(f"{ruta_graficos}grafico16.png", dpi=300)
 plt.show()
 
 # Histogramas
@@ -127,7 +154,7 @@ plt.show()
 hist_data = np.random.randn(1000)
 plt.hist(hist_data, bins=30)
 plt.title("Histograma normal")
-plt.savefig("histogramanormal.png", dpi=300, bbox_inches='tight')
+plt.savefig(f"{ruta_graficos}histograma17.png", dpi=300, bbox_inches='tight')
 plt.show()
 
 # 18. Histogramas de dos conjuntos de datos con distribuciones normales diferentes
@@ -137,7 +164,7 @@ plt.hist(data1, bins=30, alpha=0.5, label="Set 1")
 plt.hist(data2, bins=30, alpha=0.5, label="Set 2")
 plt.legend()
 plt.title("Histograma dos conjuntos")
-plt.savefig("histogramaconjuntos.png", dpi=300, bbox_inches='tight')
+plt.savefig(f"{ruta_graficos}histograma18.png", dpi=300, bbox_inches='tight')
 plt.show()
 
 # 19. Experimentando con diferentes valores de bins
@@ -146,7 +173,7 @@ plt.hist(hist_data, bins=30, alpha=0.5, label="30 bins")
 plt.hist(hist_data, bins=50, alpha=0.5, label="50 bins")
 plt.legend()
 plt.title("Histograma experimentando valores")
-plt.savefig("histogramadiferentesvalores.png", dpi=300, bbox_inches='tight')
+plt.savefig(f"{ruta_graficos}histograma19.png", dpi=300, bbox_inches='tight')
 plt.show()
 
 # 20. Añadir línea vertical indicando la media
@@ -154,7 +181,7 @@ mean_value = np.mean(hist_data)
 plt.hist(hist_data, bins=30)
 plt.axvline(mean_value, color='r', linestyle='dashed', linewidth=2)
 plt.title("Histograma indicando la media")
-plt.savefig("histogramaindicamedia.png", dpi=300, bbox_inches='tight')
+plt.savefig(f"{ruta_graficos}histograma20.png", dpi=300, bbox_inches='tight')
 plt.show()
 
 # 21. Histogramas superpuestos con transparencias
@@ -162,7 +189,7 @@ plt.hist(data1, bins=30, alpha=0.5, color='blue', label='Set 1')
 plt.hist(data2, bins=30, alpha=0.5, color='red', label='Set 2')
 plt.legend()
 plt.title("Histograma superpuestos")
-plt.savefig("histogramasuperpuestos.png", dpi=300, bbox_inches='tight')
+plt.savefig(f"{ruta_graficos}histograma21.png", dpi=300, bbox_inches='tight')
 plt.show()
 
 
