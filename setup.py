@@ -8,7 +8,7 @@ setup(
     author="Lina Marcela Roldan Pulgarin",
     author_email="lina.roldan@est.iudigital.edu.co",
     description="",
-    py_modules=["actividad_1"],
+    py_modules=["actividad_1", "actividad_2"],
     install_requires=[
         "pandas",
         "requests",
