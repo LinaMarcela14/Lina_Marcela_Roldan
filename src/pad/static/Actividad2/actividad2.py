@@ -4,193 +4,253 @@ import matplotlib.pyplot as plt
 import os
 
 
-class Actividad2:
-    def __init__(self, data):
-        datos = [(0,1),(0,2),(0,3),(0,4),(0,5)(0,6),(0,7),(0,8),(0,9),(0,10)]
-        self.df = pd.DataFrame(data=datos, columns=["x", "y"])
-        
+class actividad2:
     def __init__(self):
-        self.ruta_act2 = "src/pad/static/Actividad2/".format(os.path.dirname(os.path.abspath(__file__)))
-        self.df = pd.read_csv(self.ruta_act2 + "data.csv")
         
-ruta_graficos = 'src/pad/static/Actividad2/graficos'
-os.makedirs(ruta_graficos, exist_ok=True)
-        
+        datos = {
+            "# ejercicio": list(range(1, 22)),
+            "valor": [x*0 for x in range(1, 22)]
+        }
+        self.df = pd.DataFrame(data=datos,columns=["# ejercicio", "valor"]) 
+        self.ruta_raiz=os.path.abspath(os.getcwd())
+        self.ruta_act2 = "{}/src/pad/static/Actividad2/".format(self.ruta_raiz)
+        self.ruta_img = "{}/img/".format(self.ruta_act2)
+        self.ruta_csv = "{}/csv/".format(self.ruta_act2)
+        print(self.ruta_raiz)
+
 
 # Introducción y cálculos con los arrays de NumPy
-# 1. Genera un array con valores desde 10 hasta 29
-array1 = np.arange(10, 30)
-print("Array de 10 a 29:", array1)
+# Genera un array con valores desde 10 hasta 29
+    def punto_1(self, inf=10, sup=29):   
+        array_10_29 = np.arange(inf,sup)
+        self.df["valor"] =self.df["valor"].astype(object) 
+        self.df.loc[0,"valor"] = str(array_10_29)
 
-# 2. Suma de todos los elementos en un array de 10x10 lleno de unos
-array2 = np.ones((10, 10))
-sum_array2 = np.sum(array2)
-print("Suma de todos los elementos:", sum_array2)
+# Suma de todos los elementos en un array de 10x10 lleno de unos
+    def punto_2(self): 
+        array_10x10 = np.ones((10,10))
+        suma = np.sum(array_10x10)
+        self.df.loc[1,"valor"] = str(array_10x10)
+        
+# Dados dos arrays de tamaño 5, llenos de números aleatorios desde 1 hasta 10, realiza un producto elemento a elemento     
+    def punto_3(self):
+            array_5_1 = np.random.randint(1,10,5)
+            array_5_2 = np.random.randint(1,10,5)
+            self.df.loc[2,"valor"] = f"{array_5_1}, {array_5_2}, {array_5_1*array_5_2}"
+        
 
-# 3. Producto elemento a elemento entre dos arrays aleatorios de tamaño 5
-array3 = np.random.randint(1, 11, 5)
-array4 = np.random.randint(1, 11, 5)
-product_array = array3 * array4
-print("Producto elemento a elemento:", product_array)
 
-# 4. Matriz de 4x4 con elementos i+j y su inversa
-matrix = np.fromfunction(lambda i, j: i + j, (4, 4), dtype=int)
-if np.linalg.det(matrix) != 0:
-    inverse_matrix = np.linalg.inv(matrix)
-    print("Matriz:", matrix)
-    print("Inversa de la matriz:", inverse_matrix)
-else:
-    print("La matriz no tiene inversa.")
+# Crea una matriz de 4x4, donde cada elemento es igual a i+j (con i y j siendo el índice de fila y columna, respectivamente) y calcula su inversa
+    def punto_4(self):
+        matriz = np.zeros((4, 4), dtype=int)
+        for i in range(4):
+            for j in range(4):
+                matriz[i,j] = i+j
+                    # Calcular la inversa de la matriz
+        try:
+            matriz_inversa = np.linalg.inv(matriz)
+            self.df["# ejercicio"] = 4
+            self.df.loc[3,"valor"] = f"{matriz}, {matriz_inversa}"
+        except np.linalg.LinAlgError:
+            self.df.loc[3,"valor"] = f"{matriz} " + "La matriz no tiene inversa"
 
-# 5. Valores máximo y mínimo en un array de 100 elementos aleatorios y sus índices
-array5 = np.random.rand(100)
-max_val = np.max(array5)
-min_val = np.min(array5)
-max_idx = np.argmax(array5)
-min_idx = np.argmin(array5)
-print("Máximo:", max_val, "en índice", max_idx)
-print("Mínimo:", min_val, "en índice", min_idx)
+# Encuentra los valores máximo y mínimo en un array de 100 elementos aleatorios y muestra sus índices
+
+    def punto_5(self):
+        array_aleatorio = np.random.rand(100)
+        valor_maximo = np.max(array_aleatorio)
+        indice_maximo = np.argmax(array_aleatorio)
+        valor_minimo = np.min(array_aleatorio)
+        indice_minimo = np.argmin(array_aleatorio)
+        self.df.loc[4, "valor"] = f"{array_aleatorio}, {valor_maximo}, {indice_maximo}, {valor_minimo}, {indice_minimo}" 
+
+
 
 # Broadcasting e indexado de Arrays
-# 6. Suma de un array 3x1 y uno de 1x3 usando broadcasting
-array6 = np.array([[1], [2], [3]])
-array7 = np.array([[1, 2, 3]])
-result = array6 + array7
-print("Resultado del broadcasting:", result)
+# Suma de un array 3x1 y uno de 1x3 usando broadcasting
+    def punto_6(self):
+        array6 = np.array([[1], [2], [3]])
+        array7 = np.array([[1, 2, 3]])
+        result = array6 + array7
+        print("Resultado del broadcasting:", result)
 
-# 7. Extraer una submatriz 2x2 desde una matriz 5x5
-matrix5x5 = np.random.randint(0, 10, (5, 5))
-submatrix = matrix5x5[1:3, 1:3]
-print("Matriz original:", matrix5x5)
-print("Submatriz extraída:", submatrix)
+# Extraer una submatriz 2x2 desde una matriz 5x5
+    def punto_7(self):
+        matrix5x5 = np.random.randint(0, 10, (5, 5))
+        submatrix = matrix5x5[1:3, 1:3]
+        print("Matriz original:", matrix5x5)
+        print("Submatriz extraída:", submatrix)
 
-# 8. Cambiar valores de índice 3 a 6 en un array de ceros a 5
-array8 = np.zeros(10)
-array8[3:7] = 5
-print("Array modificado:", array8)
+# Crea un array de ceros de tamaño 10 y usa indexado para cambiar el valor de los elementos en el rango de índices 3 a 6 a 5
+    def punto_8(self):
+        array_ceros = np.zeros(10)
+        array_ceros[3:7] = 5
+        self.df.loc[7,"valor"] = str (array_ceros)
+        
 
-# 9. Invertir el orden de las filas de una matriz 3x3
-matrix3x3 = np.random.randint(0, 10, (3, 3))
-inverted_matrix = matrix3x3[::-1]
-print("Matriz original:", matrix3x3)
-print("Matriz con filas invertidas:", inverted_matrix)
+# Dada una matriz de 3x3, invierte el orden de sus filas
+    def punto_9(self):
+        matriz = np.random.randint(0, 100, (3, 3))
+        matriz_invertida = matriz[::-1]
+        self.df.loc[8,"valor"] = f"{matriz}, {matriz_invertida}"
+        
 
-# 10. Seleccionar elementos mayores a 0.5 en un array aleatorio de tamaño 10
-array10 = np.random.rand(10)
-selected_elements = array10[array10 > 0.5]
-print("Elementos mayores a 0.5:", selected_elements)
+# Dado un array de números aleatorios de tamaño 10, selecciona y muestra solo aquellos que sean mayores a 0.5
+    def punto_10(self):
+        array_aleatorio = np.random.rand(10)
+        array_mayores_05 = array_aleatorio[array_aleatorio > 0.5]
+        self.df.loc[9,"valor"] = f"{array_aleatorio}, {array_mayores_05}"   
 
-df = pd.DataFrame({
-    'Array 1': [array1.tolist()],
-    'Suma total': [sum_array2],
-    'Producto elemento a elemento': [product_array.tolist()],
-    'Max Value': [max_val],
-    'Min Value': [min_val],
-    'Max Index': [max_idx],
-    'Min Index': [min_idx],
-    'Suma con Broadcasting': [result.tolist()],
-    'Submatriz': [submatrix.tolist()],
-    'Array modificado': [array8.tolist()],
-    'Matriz invertida': [inverted_matrix.tolist()],
-    'Valores filtrados': [selected_elements.tolist()],
-})
-ruta_csv = 'src/pad/static/Actividad2/numpy_results.csv'
-df.to_csv(ruta_csv, index=False)
-print(f"Archivo CSV generado en: {ruta_csv}")
+# Genera dos arrays de tamaño 100 con números aleatorios y crea un gráfico de dispersión
+    def punto_11(self,num=100):
+        x = np.random.rand(num)
+        y = np.random.rand(num)
+        plt.scatter(x,y)
+        ruta = "{}punto_11.png".format(self.ruta_img)
+        plt.savefig(ruta)    
+        self.df.loc[10,"valor"] = f"{x}, {y}, {ruta}"
 
-# Gráficos de dispersión, densidad y contorno
-# 11. Gráfico de dispersión con dos arrays aleatorios de tamaño 100
-x = np.random.rand(100)
-y = np.random.rand(100)
-plt.scatter(x, y)
-plt.title("Gráfico de dispersión")
-plt.savefig(f"{ruta_graficos}graficodispersion11.png", dpi=300)
-plt.show()
+# Genera un gráfico de dispersión las variables 𝑥 y 𝑦 = 𝑠𝑖𝑛(𝑥)+ ruido Gaussiano. Donde x es un array con númereos entre -2𝜋 𝑦 2𝜋. Grafica también los puntos 𝑦 = 𝑠𝑖𝑛(𝑥) en el mismo plot
+    def punto_12(self,num=100):
+        x = np.linspace(-2*np.pi, 2*np.pi, num)
+        y = np.sin(x) + np.random.normal(0, 0.1, num)
+        y_sin = np.sin(x)
+        plt.scatter(x, y)
+        plt.plot(x, np.sin(x), color="red")
+        ruta = "{}punto_12.png".format(self.ruta_img)
+        plt.savefig(ruta)   
+        plt.show()
+        self.df.loc[11,"valor"] = str(ruta)
+        
+# Utiliza la función np.meshgrid para crear una cuadrícula y luego aplica la función z = np.cos(x) + np.sin(y) para generar y mostrar un gráfico de contorno
+    def punto_13(self):
+        x, y = np.meshgrid(np.linspace(-2*np.pi, 2*np.pi, 100), np.linspace(-2*np.pi, 2*np.pi, 100))
+        z = np.cos(x) + np.sin(y)
+        plt.contour(x, y, z)
+        ruta = "{}punto_13.png".format(self.ruta_img)  
+        plt.savefig(ruta)
+        plt.show()
+        self.df.loc[12,"valor"] = str(ruta)
 
+# Crea un gráfico de dispersión con 1000 puntos aleatorios y utiliza la densidad de estos puntos para ajustar el color de cada punto
+    def punto_14(self):
+        x = np.random.rand(1000)
+        y = np.random.rand(1000)
+        plt.scatter(x, y, c=x*y, cmap="viridis", alpha=0.5)
+        plt.colorbar()
+        ruta = "{}punto_14.png".format(self.ruta_img)
+        plt.savefig(ruta)
+        plt.show()
+        self.df.loc[13,"valor"] = str(ruta)
 
-# 12. Gráfico de dispersión con y = sin(x) + ruido gaussiano
-x = np.linspace(-2 * np.pi, 2 * np.pi, 100)
-y = np.sin(x) + np.random.normal(0, 0.1, 100)
-plt.scatter(x, y, label="Datos con ruido")
-plt.plot(x, np.sin(x), color='r', label="y = sin(x)")
-plt.legend()
-plt.savefig(f"{ruta_graficos}grafico12.png", dpi=300)
+# A partir de la misma función del punto_12, genera un gráfico de contorno lleno
+    def punto_15(self):
+        x, y = np.meshgrid(np.linspace(-2*np.pi, 2*np.pi, 100), np.linspace(-2*np.pi, 2*np.pi, 100))
+        z = np.cos(x) + np.sin(y)
+        plt.contour(x, y, z, levels=20)
+        plt.colorbar()
+        ruta = "{}punto_15.png".format(self.ruta_img)
+        plt.savefig(ruta)
+        plt.show()
+        self.df.loc[14,"valor"] = str(ruta)
 
-# 13. Gráfico de contorno con np.meshgrid y función z = cos(x) + sin(y)
-x = np.linspace(-5, 5, 50)
-y = np.linspace(-5, 5, 50)
-X, Y = np.meshgrid(x, y)
-Z = np.cos(X) + np.sin(Y)
-plt.contour(X, Y, Z)
-plt.title("Gráfico de contorno")
-plt.savefig(f"{ruta_graficos}grafico13.png", dpi=300)
-plt.show()
+# Añade etiquetas para el eje X (‘Eje X’), eje Y (‘Eje Y’) y un título (‘Gráfico de Dispersión’) a tu gráfico de dispersión del ejercicio 12 y crea leyendas para cada gráfico usando código LaTex
+    def punto_16(self):
+        x = np.linspace(-2*np.pi, 2*np.pi, 100)
+        y = np.sin(x) + np.random.normal(0, 0.1, 100)
+        y_sin = np.sin(x)
+        plt.scatter(x, y, label=r"$y = \sin(x) + \text{ruido gaussiano}$")
+        plt.plot(x, y_sin, color="red", label=r"$y = \sin(x)$")
+        plt.xlabel(r"$\text{Eje X}$")
+        plt.ylabel(r"$\text{Eje Y}$")
+        plt.title(r"$\text{Gráfico de Dispersión}$")
+        plt.legend()
+        ruta = "{}punto_16.png".format(self.ruta_img)
+        plt.savefig(ruta)
+        plt.show()
+        self.df.loc[15,"valor"] = str(ruta)
 
-# 14. Gráfico de dispersión con 1000 puntos y color basado en densidad
-x = np.random.randn(1000)
-y = np.random.randn(1000)
-plt.scatter(x, y, c=np.random.rand(1000), cmap='viridis')
-plt.colorbar()
-plt.savefig(f"{ruta_graficos}grafico14.png", dpi=300)
-plt.show()
+# Crea un histograma a partir de un array de 1000 números aleatorios generados con una distribución normal
+    def punto_17(self):
+        x = np.random.normal(0, 1, 1000)
+        plt.hist(x, bins=30, alpha=0.5, color="blue", edgecolor="black")
+        ruta = "{}punto_17.png".format(self.ruta_img)
+        plt.savefig(ruta)
+        plt.show()
+        self.df.loc[16,"valor"] = str(ruta)
+    
+# Genera dos sets de datos con distribuciones normales diferentes y muéstralos en el mismo histograma
+    def punto_18(self):
+        x = np.random.normal(0, 1, 1000)
+        y = np.random.normal(1, 1, 1000)
+        plt.hist(x, bins=30, alpha=0.5, color="blue", edgecolor="black", label="x")
+        plt.hist(y, bins=30, alpha=0.5, color="red", edgecolor="black", label="y")
+        plt.legend()
+        ruta = "{}punto_18.png".format(self.ruta_img)
+        plt.savefig(ruta)
+        plt.show()
+        self.df.loc[17,"valor"] = str(ruta)
+    
+# Experimenta con diferentes valores de bins (por ejemplo, 10, 30, 50) en un histograma y observa cómo cambia la representación
+    def punto_19(self):
+        x = np.random.normal(0, 1, 1000)
+        plt.hist(x, bins=10, alpha=0.5, color="blue", edgecolor="black", label="10")
+        plt.hist(x, bins=30, alpha=0.5, color="red", edgecolor="black", label="30")
+        plt.hist(x, bins=50, alpha=0.5, color="green", edgecolor="black", label="50")
+        plt.legend()
+        ruta = "{}punto_19.png".format(self.ruta_img)
+        plt.savefig(ruta)
+        plt.show()    
+        self.df.loc[18,"valor"] = str(ruta) 
+    
+# Añade una línea vertical que indique la media de los datos en el histograma
+    def punto_20(self):
+        x = np.random.normal(0, 1, 1000)
+        plt.hist(x, bins=30, alpha=0.5, color="blue", edgecolor="black")
+        plt.axvline(np.mean(x), color="red", linestyle="--", label="Media")
+        plt.legend()
+        ruta = "{}punto_20.png".format(self.ruta_img)
+        plt.savefig(ruta)
+        plt.show()
+        self.df.loc[19,"valor"] = str(ruta)
 
-# 15. Gráfico de contorno lleno
-plt.contourf(X, Y, Z, cmap='plasma')
-plt.colorbar()
-plt.savefig(f"{ruta_graficos}grafico15.png", dpi=300)
-plt.show()
+# Crea histogramas superpuestos para los dos sets de datos del ejercicio 17, usando colores y transparencias diferentes para distinguirlos
+    def punto_21(self):
+        x = np.random.normal(0, 1, 1000)
+        y = np.random.normal(1, 1, 1000)
+        plt.hist(x, bins=30, alpha=0.5, color="blue", edgecolor="black", label="x")
+        plt.hist(y, bins=30, alpha=0.5, color="red", edgecolor="black", label="y")
+        plt.legend()
+        ruta = "{}punto_21.png".format(self.ruta_img)
+        plt.savefig(ruta)
+        plt.show()
+        self.df.loc[20,"valor"] = str(ruta)
+    
 
-# 16. Añadir etiquetas y leyendas con código LaTex
-plt.scatter(x, y, label=r'$Datos$')
-plt.xlabel(r'$Eje\ X$')
-plt.ylabel(r'$Eje\ Y$')
-plt.title(r'$Gráfico\ de\ Dispersión$')
-plt.legend()
-plt.savefig(f"{ruta_graficos}grafico16.png", dpi=300)
-plt.show()
+# Guarda todos los resultados 
+    def ejecutar (self):
+        self.punto_1()
+        self.punto_2()
+        self.punto_3()
+        self.punto_4()
+        self.punto_5()
+        self.punto_6()
+        self.punto_7()
+        self.punto_8()
+        self.punto_9()
+        self.punto_10()
+        self.punto_11()
+        self.punto_12()
+        self.punto_13()
+        self.punto_14()
+        self.punto_15()
+        self.punto_16()
+        self.punto_17()
+        self.punto_18()
+        self.punto_19()
+        self.punto_20()
+        self.punto_21()
+        self.df.to_csv("{}Actividad2.csv".format(self.ruta_csv), index=False)
 
-# Histogramas
-# 17. Histograma de 1000 números con distribución normal
-hist_data = np.random.randn(1000)
-plt.hist(hist_data, bins=30)
-plt.title("Histograma normal")
-plt.savefig(f"{ruta_graficos}histograma17.png", dpi=300, bbox_inches='tight')
-plt.show()
-
-# 18. Histogramas de dos conjuntos de datos con distribuciones normales diferentes
-data1 = np.random.normal(0, 1, 1000)
-data2 = np.random.normal(2, 1.5, 1000)
-plt.hist(data1, bins=30, alpha=0.5, label="Set 1")
-plt.hist(data2, bins=30, alpha=0.5, label="Set 2")
-plt.legend()
-plt.title("Histograma dos conjuntos")
-plt.savefig(f"{ruta_graficos}histograma18.png", dpi=300, bbox_inches='tight')
-plt.show()
-
-# 19. Experimentando con diferentes valores de bins
-plt.hist(hist_data, bins=10, alpha=0.5, label="10 bins")
-plt.hist(hist_data, bins=30, alpha=0.5, label="30 bins")
-plt.hist(hist_data, bins=50, alpha=0.5, label="50 bins")
-plt.legend()
-plt.title("Histograma experimentando valores")
-plt.savefig(f"{ruta_graficos}histograma19.png", dpi=300, bbox_inches='tight')
-plt.show()
-
-# 20. Añadir línea vertical indicando la media
-mean_value = np.mean(hist_data)
-plt.hist(hist_data, bins=30)
-plt.axvline(mean_value, color='r', linestyle='dashed', linewidth=2)
-plt.title("Histograma indicando la media")
-plt.savefig(f"{ruta_graficos}histograma20.png", dpi=300, bbox_inches='tight')
-plt.show()
-
-# 21. Histogramas superpuestos con transparencias
-plt.hist(data1, bins=30, alpha=0.5, color='blue', label='Set 1')
-plt.hist(data2, bins=30, alpha=0.5, color='red', label='Set 2')
-plt.legend()
-plt.title("Histograma superpuestos")
-plt.savefig(f"{ruta_graficos}histograma21.png", dpi=300, bbox_inches='tight')
-plt.show()
-
-
-
+ene = actividad2()
+ene.ejecutar()
